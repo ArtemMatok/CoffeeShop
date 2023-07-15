@@ -1,0 +1,42 @@
+﻿@using Coffee.ViewModels
+@model OrderVM
+
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Customer Name
+            </th>
+            <th>
+                Customer Description
+            </th>
+            <th>
+                Customer Numner
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Orders)
+        {
+                            <tr>
+                                <td>
+                                    @item.Name
+                                </td>
+                                <td>
+                                    @item.Description
+                                </td>
+                                    <td>
+                                        @item.Number
+                                    </td>
+                                <td role="group">
+                                    
+                                    <a asp-action="Delete" asp-controller="Order" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Виконати заказ</a>
+                                </td>
+                            </tr>
+        }
+    </tbody>
+</table>

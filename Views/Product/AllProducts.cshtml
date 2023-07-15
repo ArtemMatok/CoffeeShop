@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Product>
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Coffe Website</title>
+    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+
+    <!-- Link to JS -->
+    <script src="~/js/main.js"></script>
+ </head>
+ <body>
+     <!-- Navbar -->
+   
+
+     
+     <section class="product" id="product">
+         <div class="heading">
+             <h2>Our  products</h2>
+         </div>
+        @foreach (Product item in Model)
+        {       
+
+                        <div class="products-container">
+                         <div class="box">
+                             <img src="@item.Image"/>
+                             <h3>@item.Name</h3>
+                             <p>@item.Description</p>
+                             <div class="content">
+                                 <span>$@item.Price</span>
+                                          
+                                            
+                                           
+                                 </div>
+                         </div>
+
+                    </div> 
+        }
+         <!-- Container -->
+
+
+     </section>
+
+
+
+
+ </body>
+</html>
+
+
+

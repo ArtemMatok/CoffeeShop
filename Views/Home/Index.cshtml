@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Coffe Website</title>
+    <link rel="stylesheet" href="~/css/Style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"/>
+
+    <!-- Link to JS -->
+    <script src="~/js/main.js"></script>
+ </head>
+ <body>
+     <!-- Navbar -->
+     <header>
+         <a href="#" class="logo">
+             <img src="/lib/logo.png" alt=""/>
+         </a>
+         <!--Menu-Ic-->
+            <i class="bx bx-menu" id="menu-icon"></i>
+            <!-- Links-->
+            <ul class="navbar">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#product">Popular</a></li>
+                <li><a asp-controller="Product" asp-action="AllProducts">Our Products</a></li>
+            @if (User.IsInRole("Admin"))
+            {
+                             <li><a asp-controller="Product" asp-action="Index">Table of products</a></li>
+                       
+            }
+            
+            </ul>
+            <!-- Icon -->
+            <div class="header-icon">
+                @if(User.IsInRole("Admin"))
+                {
+                        <a asp-controller="Order" asp-action="Index"> <i  class="bx bx-cart-alt"></i></a>
+                }
+               
+            @if (!User.Identity.IsAuthenticated)
+            {
+                            <a asp-controller="Account" asp-action="Login"><i class='bx bxs-log-in'></i></a>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                        <form method="post" asp-controller="Account" asp-action="Logout">
+
+                                    <input class="exit"  type="submit" value="Вихід" />
+                                </form>
+                @* <a asp-controller="Account" asp-action="Logout"><i class='bx bx-exit'></i></a>*@
+            }
+
+            </div>
+            <!-- Search Box-->
+            <div class="search-box">
+                <input type="search" name="" id="" placeholder="Search Here..."/>
+            </div>
+     </header>
+     <!-- Home -->
+     <section class="home" id="home">
+         <div class="home-text">
+             <h1>Start rout day <br>with coffee</h1>
+             <p>Indulge in the rich aromas and exquisite flavors that define our coffee experience</p>
+             <a href="#" class="btn">Shop Now</a>
+         </div>
+         <div class="home-img">
+             <img src="/lib/main.png" alt=""/>
+         </div>
+     </section>
+
+
+     <!-- About -->
+     <section class="about" id="about"> 
+         <div class="about-img">
+             <img src="/lib/about.jpg"/>
+         </div>
+         <div class="about-text">
+             <h2>Our History</h2>
+             <p>Once upon a time, in a bustling city known for its love of caffeine and culinary delights, a group of passionate coffee enthusiasts came together with a shared dream: to create a coffee restaurant that would redefine the coffee experience. Their journey began with a simple idea—to bring together the finest coffee beans from around the world and transform them into extraordinary concoctions that would delight the senses and captivate the taste buds.</p>
+
+             <a href="#" class="btn">Learn More</a>
+         </div>
+
+     </section>
+
+     <!-- Products -->
+     <section class="product" id="product">
+         <div class="heading">
+             <h2>Our popular products</h2>
+         </div>
+         <!-- Container -->
+         <div class="products-container">
+             <div class="box">
+                 <img src="/lib/p1.png"/>
+                 <h3>Americano Pure</h3>
+                 <div class="content">
+                     <span>$25</span>
+
+                 </div>
+             </div>
+              <div class="box">
+                 <img src="/lib/p2.png"/>
+                 <h3>Americano Pure</h3>
+                 <div class="content">
+                     <span>$25</span>
+
+                 </div>
+             </div>
+             <div class="box">
+                 <img src="/lib/p3.png"/>
+                 <h3>Americano Pure</h3>
+                 <div class="content">
+                     <span>$25</span>
+
+                 </div>
+             </div>
+         </div>
+     </section>
+
+
+
+
+ </body>
+</html>

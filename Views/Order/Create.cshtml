@@ -1,0 +1,54 @@
+﻿@using Coffee.ViewModels
+
+@model OrderVM
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<form method="post" asp-action="Create" asp-controller="Order" enctype="multipart/form-data">
+    
+    
+    <div class="border p-3 mt-4">
+        
+        <div asp-validation-summary=All></div>
+
+        <div class="row mb-3">
+            <label asp-for="Order.Name"></label>
+            <input asp-for="Order.Name" class="form-control"/>
+            <span asp-validation-for="Order.Name" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Order.Description"></label>
+            <input asp-for="Order.Description" class="form-control"/>
+            <span asp-validation-for="Order.Description" class="text-danger"></span>
+        </div>
+        <div class="row mb-3">
+            <label asp-for="Order.Number"></label>
+            <input asp-for="Order.Number" class="form-control"/>
+            <span asp-validation-for="Order.Number" class="text-danger"></span>
+        </div>
+      
+
+
+        
+                       <button class="btn btn-primary" onclick="return ValidateEmpty()" type="submit">Create</button>
+    
+    </div>
+    <a asp-action="Index" asp-controller="Product" >Back To List</a>
+</form>
+
+
+@section scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"></partial>
+    }
+        <script>
+      function ValidateEmpty() {
+        Swal.fire(
+          'Good job!',
+          'You clicked the button!',
+          'success'
+        );
+
+      
+      }
+    </script>
+        
+}
